@@ -1,6 +1,9 @@
 package pe.edu.tecsup.lab11.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,8 +20,8 @@ public class Laboratorio {
     private String contacto;
 
     @OneToMany(mappedBy = "laboratorio", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrdenCompra> ordenes;
-
+    @JsonIgnore  // O usa JsonManagedReference / JsonIgnoreProperties si quieres verlas
+    private List<OrdenCompra> ordenes = new ArrayList<>();
     // Getters y Setters
 
     public Long getCodLab() {

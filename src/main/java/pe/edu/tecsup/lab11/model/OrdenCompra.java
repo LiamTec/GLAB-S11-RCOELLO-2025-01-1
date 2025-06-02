@@ -1,5 +1,6 @@
 package pe.edu.tecsup.lab11.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -16,8 +17,10 @@ public class OrdenCompra {
     private String nroFacturaProv;
 
     @ManyToOne
-    @JoinColumn(name = "codLab")
+    @JoinColumn(name = "cod_lab")
+    @JsonIgnoreProperties("ordenes")
     private Laboratorio laboratorio;
+
 
     // Getters y Setters
 
